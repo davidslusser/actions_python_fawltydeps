@@ -19,7 +19,7 @@ inputs:
   command:
     description: "command to run fawltydeps; overrides default command and options"
     required: false
-    default: "--detailed"
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -42,12 +42,12 @@ runs:
     - name: "Run FawltyDeps"
       run: |
         if [ -n "${{ inputs.command }}" ]; then
-          bash -c "${{ inputs.command }}"
+          fawltydeps ${{ inputs.command }}
         else
           if [ -n "${{ inputs.options }}" ]; then
-            fawltydeps "${{ inputs.options }}"
+            fawltydeps --detailed ${{ inputs.options }}
           else
-            fawltydeps
+            fawltydeps --detailed
           fi
         fi
       shell: bash
