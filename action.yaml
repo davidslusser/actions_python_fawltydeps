@@ -19,7 +19,7 @@ inputs:
   command:
     description: "command to run fawltydeps; overrides default command and options"
     required: false
-    default: ""
+    default: "--detailed"
 runs:
   using: "composite"
   steps:
