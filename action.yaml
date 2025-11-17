@@ -7,7 +7,7 @@ inputs:
   options:
     description: "options to be passed to the fawltydeps command"
     required: false
-    default: ""  
+    default: "--detailed"  
   pip_install_command: 
     description: "command used to install python dependencies"
     required: false
@@ -44,10 +44,6 @@ runs:
         if [ -n "${{ inputs.command }}" ]; then
           fawltydeps ${{ inputs.command }}
         else
-          if [ -n "${{ inputs.options }}" ]; then
-            fawltydeps --detailed ${{ inputs.options }}
-          else
-            fawltydeps --detailed
-          fi
+          fawltydeps ${{ inputs.options }}
         fi
       shell: bash
