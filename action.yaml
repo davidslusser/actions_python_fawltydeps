@@ -44,6 +44,10 @@ runs:
         if [ -n "${{ inputs.command }}" ]; then
           bash -c "${{ inputs.command }}"
         else
-          fawltydeps "${{ inputs.options }}"
+          if [ -n "${{ inputs.options }}" ]; then
+            fawltydeps "${{ inputs.options }}"
+          else
+            fawltydeps
+          fi
         fi
       shell: bash
